@@ -1,18 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import TodoList from "./components/TodoList";
+import Editor from "./components/Editor";
+import Form from "./components/Form";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <BrowserRouter>
+          <div>
+            <ul style={{ listStyleType: "none" }}>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/todolist">TodoList</Link>
+              </li>
+              <li>
+                <Link to="/editor">Editor</Link>
+              </li>
+              <li>
+                <Link to="/form">Form</Link>
+              </li>
+            </ul>
+
+            <hr />
+            <Switch>
+              <Route exact path="/" component={() => null} />
+              <Route
+                path="/todolist"
+                component={() => <TodoList initialTodos={[]} />}
+              />
+              <Route path="/editor" component={Editor} />
+              <Route path="/form" component={Form} />
+            </Switch>
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
