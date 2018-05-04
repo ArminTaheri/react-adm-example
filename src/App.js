@@ -13,28 +13,35 @@ class App extends Component {
           <div>
             <ul style={{ listStyleType: "none" }}>
               <li>
-                <Link to="/">Home</Link>
+                <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
               </li>
               <li>
-                <Link to="/todolist">TodoList</Link>
+                <Link to={`${process.env.PUBLIC_URL}/todolist`}>TodoList</Link>
               </li>
               <li>
-                <Link to="/editor">Editor</Link>
+                <Link to={`${process.env.PUBLIC_URL}/editor`}>Editor</Link>
               </li>
               <li>
-                <Link to="/form">Form</Link>
+                <Link to={`${process.env.PUBLIC_URL}/form`}>Form</Link>
               </li>
             </ul>
 
             <hr />
             <Switch>
-              <Route exact path="/" component={() => null} />
               <Route
-                path="/todolist"
+                exact
+                path={`${process.env.PUBLIC_URL}/`}
+                component={() => null}
+              />
+              <Route
+                path={`${process.env.PUBLIC_URL}/todolist`}
                 component={() => <TodoList initialTodos={[]} />}
               />
-              <Route path="/editor" component={Editor} />
-              <Route path="/form" component={Form} />
+              <Route
+                path={`${process.env.PUBLIC_URL}/editor`}
+                component={Editor}
+              />
+              <Route path={`${process.env.PUBLIC_URL}/form`} component={Form} />
             </Switch>
           </div>
         </BrowserRouter>
